@@ -11,5 +11,5 @@ Latihan UKK Kode 1 (Restoran)
 7. Sesuaikan DB_CONNECTION, DB_HOST, DB_PORT, DB_DATABASE, DB_USERNAME dan DB_PASSWORD dengan database kalian
 8. Ketik "php artisan key:generate" di cmd / terminal (tanpa tanda ")
 9. Kalau sudah, ketik "php artisan migrate:fresh --seed" di cmd / terminal (tanpa tanda ")
-10. Tunggu
-11. Silahkan belajar!
+10. Tunggu sampai selesai
+11. Selamat belajar!
