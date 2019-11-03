@@ -14,5 +14,11 @@ Latihan UKK Kode 1 (Restoran)
 10. Tunggu sampai selesai
 11. Selamat belajar!
 
+# Users
+1. username: admin, pass: admin
+2. username: waiter, pass: waiter
+3. username: kasir, pass: kasir
+4. username: owner, pass: mataram03
+
 # Errors
 1. CSS tidak nyambung. how to fix : jangan pakai "php artisan serve", tapi lewat url untuk pengaksesan, misalkan localhost/projects/ukk-restoran/home
