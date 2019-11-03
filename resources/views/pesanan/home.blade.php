@@ -76,12 +76,12 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                 </div>
-                <form action="{{ url('/pelanggan/delete', []) }}" method="post">
+                <form action="{{ url('/pesanan/delete', []) }}" method="post">
                     {{ csrf_field() }}
                     {{ method_field('DELETE') }}
-                    <input type="hidden" name="id" id="pelangganid" readonly>
+                    <input type="hidden" name="id" id="pesananid" readonly>
                     <div class="modal-body">
-                        Apakah anda yakin ingin menghapus data pelanggan: <b><span id="namapelanggan"></span></b>? Aksi ini tidak dapat di-<i>undo</i>
+                        Apakah anda yakin ingin menghapus data pesanan: <b><span id="nomerpesanan"></span></b>? Aksi ini tidak dapat di-<i>undo</i>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
@@ -93,14 +93,14 @@
     </div>
 
     <script>
-        function prepare(pelangganId) {
-            var idPelanggan = pelangganId
-            var siteUrl = "{{ url('/pelanggan/json', 'id') }}"
-            siteUrl = siteUrl.replace('id', idPelanggan)
+        function prepare(pesananId) {
+            var idPesanan = pesananId
+            var siteUrl = "{{ url('/pesanan/json', 'id') }}"
+            siteUrl = siteUrl.replace('id', idPesanan)
 
             $.getJSON(siteUrl, function (data) {
-                $('#pelangganid').val(data.id)
-                $('#namapelanggan').text(data.nama)
+                $('#pesananid').val(data.id)
+                $('#nomerpesanan').text(data.id)
             })
         }
     </script>
