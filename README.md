@@ -13,3 +13,6 @@ Latihan UKK Kode 1 (Restoran)
 9. Kalau sudah, ketik "php artisan migrate:fresh --seed" di cmd / terminal (tanpa tanda ")
 10. Tunggu sampai selesai
 11. Selamat belajar!
+
+# Errors
+1. CSS tidak nyambung. how to fix : jangan pakai "php artisan serve", tapi lewat url untuk pengaksesan, misalkan localhost/projects/ukk-restoran/home
