@@ -9,7 +9,7 @@ class Pesanan extends Model
     // nama tabel
     protected $table = 'pesanan';
     // kolom-kolom yang bisa diisi lebih dari banyak row sekaligus dalam 1 waktu
-    protected $fillable = ['id_pelanggan', 'id_user'];
+    protected $fillable = ['id_user'];
 
     // relasi
     public function detail_pesanan()

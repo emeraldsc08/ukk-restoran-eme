@@ -9,7 +9,7 @@ class Transaksi extends Model
     // nama tabel
     protected $table = 'transaksi';
     // kolom-kolom yang bisa diisi lebih dari banyak row sekaligus dalam 1 waktu
-    protected $fillable = ['id_user', 'id_pelanggan', 'bayar'];
+    protected $fillable = ['id_user', 'bayar'];
 
     // relasi
     public function pesanan()
