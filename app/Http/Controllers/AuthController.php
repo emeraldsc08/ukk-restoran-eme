@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Session;
 
 class AuthController extends Controller
 {
+    /**
+     * function untuk authentikasi
+     */
     private function signin(Request $request)
     {
         $user = Users::where('username', $request->input('username'))->first();
@@ -24,6 +27,9 @@ class AuthController extends Controller
         }
     }
 
+    /**
+     * function untuk set session
+     */
     public function setSession($user)
     {
         Session::put('userid', $user->id);
@@ -32,11 +38,17 @@ class AuthController extends Controller
         Session::put('status', TRUE);
     }
 
+    /**
+     * function untuk menampilkan view sign in
+     */
     public function vSignin()
     {
         return view('auth.signin');
     }
 
+    /**
+     * function untuk validasi input sign in
+     */
     public function validateSignin(Request $request)
     {
         $this->validate($request, [
@@ -47,6 +59,9 @@ class AuthController extends Controller
         return $this->signin($request);
     }
 
+    /**
+     * function untuk logout
+     */
     public function logout()
     {
         Session::flush();

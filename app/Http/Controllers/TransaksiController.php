@@ -10,6 +10,9 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class TransaksiController extends Controller
 {
+     /**
+     * function untuk melakukan pembayaran
+     */
     private function bayar(Request $request)
     {
         $transaksi = new Transaksi();
@@ -18,6 +21,9 @@ class TransaksiController extends Controller
         $transaksi->save();
     }
 
+     /**
+     * function untuk menghitung total biaya yang harus dibayarkan
+     */
     private function total($id)
     {
         $pesanan = Pesanan::where('id', $id)->with('detail_pesanan')->first();
@@ -30,18 +36,28 @@ class TransaksiController extends Controller
         return $total;
     }
 
+    /**
+     * function untuk menampilkan halaman home transaksi dengan join pesanan
+     */
     public function home()
     {
         $transaksis = Transaksi::with('pesanan')->get();
         return view('transaksi.home', compact('transaksis'));
     }
 
+    /**
+     * function untuk menampilkan halaman pembayaran transaksi baru 
+     * dan join dengan meja
+     */
     public function vBayar()
     {
         $pesanans = Pesanan::with('meja')->get();
         return view('transaksi.new', compact('pesanans'));
     }
 
+     /**
+     * function untuk validasi input pembayaran transaksi
+     */
     public function validateBayar(Request $request)
     {
         $this->validate($request,[
@@ -60,6 +76,9 @@ class TransaksiController extends Controller
         }
     }
 
+     /**
+     * function untuk mengexport ke excel
+     */
     public function exportToExcel()
     {
         return Excel::download(new TransaksiExport, 'transaksi.xlsx');
