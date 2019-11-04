@@ -12,7 +12,8 @@ Latihan UKK Kode 1 (Restoran)
 8. Ketik "php artisan key:generate" di cmd / terminal (tanpa tanda ")
 9. Kalau sudah, ketik "php artisan migrate:fresh --seed" di cmd / terminal (tanpa tanda ")
 10. Tunggu sampai selesai
-11. Selamat belajar!
+11. Akses lewat url, misalnya "http://localhost/folder/ukk-restoran/public/home" atau akses dengan mengetikkan "php -S localhost:8000 -t public"
+12. Selamat belajar!
 
 # Users
 1. username: admin, pass: admin
@@ -23,3 +24,9 @@ Latihan UKK Kode 1 (Restoran)
 # Errors
 1. CSS tidak nyambung. how to fix : jangan pakai "php artisan serve", tapi lewat url untuk pengaksesan, misalkan localhost/projects/ukk-restoran/home
 2. Connection refused ketika migration. how to fix : jalankan "php artisan config:clear" sebelum melakukan langkah ke-9
+
+# Contact me
+Kalau ada error / ada yang mau ditanyakan silahkan wa ke nomer ini 081332172320 - Rakandhiya Daanii Rachmanto
+Btw habis ini enaknya bikin yang mana? Sistem ticketing, sistem lelang, bayar listrik, atau bayar SPP?
+
+:v
