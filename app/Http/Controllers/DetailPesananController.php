@@ -35,7 +35,7 @@ class DetailPesananController extends Controller
 
     public function home($id_pesanan)
     {
-        $detail_pesanans = Pesanan::where('id', $id_pesanan)->with('detail_pesanan')->first();
+        $detail_pesanans = Pesanan::where('id', $id_pesanan)->with('detail_pesanan', 'meja')->first();
         return view('detail.home', compact('detail_pesanans', 'id_pesanan'));
     }
 
@@ -63,7 +63,7 @@ class DetailPesananController extends Controller
         return redirect()->route('detail.home', $id_pesanan)->with('detail_success', 'Berhasil menambah detail pesanan!');
     }
 
-    public function validateEdit(Request $request, $id, $id_pesanan)
+    public function validateEdit(Request $request, $id_pesanan, $id)
     {
         $this->validate($request, [
             'id_menu' => 'required|numeric',

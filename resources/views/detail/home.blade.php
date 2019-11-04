@@ -32,6 +32,7 @@
                             <th>Nama menu</th>
                             <th>Jumlah</th>
                             <th>Subtotal</th>
+                            <th>Status</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -44,6 +45,7 @@
                                 <td>{{ $detail->menu->nama }}</td>
                                 <td>{{ $detail->jumlah }}</td>
                                 <td>{{ $detail->menu->harga * $detail->jumlah }}</td>
+                                <td>{{ $detail->status }}</td>
                                 <td>
                                     @if (\App\Transaksi::where('id_pesanan', $detail_pesanans->id)->exists())
                                         <a href="" class="btn btn-default disabled">Ubah</a>
@@ -61,7 +63,7 @@
                     </tbody>
                     <tfoot>
                         <tr>
-                            <td colspan="3">Total</td>
+                            <td colspan="4">Total</td>
                             <td>{{ $total }}</td>
                         </tr>
                     </tfoot>

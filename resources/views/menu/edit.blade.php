@@ -41,6 +41,13 @@
                 @endforeach
             </select>
         </div>
+        <div class="form-group">
+            <label for="">Status</label>
+            <select name="status" id="" class="form-control">
+                <option value="Tersedia" {{ $menu->status == "Tersedia" ? "selected":"" }}>Tersedia</option>
+                <option value="Tidak tersedia" {{ $menu->status == "Tidak tersedia" ? "selected":"" }}>Tidak tersedia</option>
+            </select>
+        </div>
         <input type="submit" value="Ubah" class="btn btn-primary">
     </form>
 @endsection

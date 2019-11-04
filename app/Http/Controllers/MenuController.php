@@ -22,6 +22,7 @@ class MenuController extends Controller
         $menu = Menu::where('id', $id)->first();
         $menu->nama = $request->input('nama');
         $menu->harga = $request->input('harga');
+        $menu->id_jenis_menu = $request->input('jenis_menu');
         $menu->status = $request->input('status');
         $menu->save();
     }

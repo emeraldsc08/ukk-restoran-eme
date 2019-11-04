@@ -19,7 +19,7 @@
         </div>
     @endif
 
-    <form action="{{ route('detail.edit', [$id_pesanan, $detail->id]) }}" method="post">
+    <form action="{{ route('detail.edit', ['id_pesanan' => $id_pesanan, 'id' => $detail->id]) }}" method="post">
         {{ csrf_field() }}
         {{ method_field('PUT') }}
         <div class="form-group">
@@ -36,6 +36,14 @@
         <div class="form-group">
             <label for="">Jumlah</label>
             <input type="number" id="" value="{{ $detail->jumlah }}" class="form-control" name="jumlah">
+        </div>
+        <div class="form-group">
+            <label for="">Status</label>
+            <select name="status" id="" class="form-control">
+                <option value="Dipesan" {{ $detail->status == "Dipesan" ? "selected":"" }}>Dipesan</option>
+                <option value="Dibuat" {{ $detail->status == "Dibuat" ? "selected":"" }}>Dibuat</option>
+                <option value="Sudah diantar" {{ $detail->status == "Sudah diantar" ? "selected":"" }}>Sudah diantar</option>
+            </select>
         </div>
         <input type="submit" value="Ubah" class="btn btn-primary">
     </form>

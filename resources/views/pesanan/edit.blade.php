@@ -28,9 +28,18 @@
                 <option value="{{ $pesanan->meja->id }}">{{ $pesanan->meja->nomer }}</option>
                 @foreach ($mejas as $meja)
                     @if ($meja->id != $pesanan->meja->id)
-                        <option value="{{ $meja->id }}">{{ $meja->nomer }}</option>
+                        @if (!\App\Pesanan::where('id_meja', $meja->id)->where('status', 'Dalam proses')->exists())
+                            <option value="{{ $meja->id }}">{{ $meja->nomer }}</option>
+                        @endif
                     @endif
                 @endforeach
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="">Status</label>
+            <select name="status" id="" class="form-control">
+                <option value="Dalam proses" {{ $pesanan->status == "Dalam proses" ? "selected":"" }}>Dalam proses</option>
+                <option value="Selesai" {{ $pesanan->status == "Selesai" ? "selected":"" }}>Selesai</option>
             </select>
         </div>
         <input type="submit" value="Ubah" class="btn btn-primary">

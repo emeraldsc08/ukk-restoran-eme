@@ -28,6 +28,7 @@
                             <th>Nama User</th>
                             <th>Nomer Meja</th>
                             <th>Total</th>
+                            <th>Status</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -45,6 +46,7 @@
                                 <td>{{ $pesanan->user->username }}</td>
                                 <td>{{ $pesanan->meja->nomer }}</td>
                                 <td>{{ $total }}</td>
+                                <td>{{ $pesanan->status }}</td>
                                 <td>
                                     @if (!\App\Transaksi::where('id_pesanan', $pesanan->id)->exists())
                                         <a href="{{ url('/pesanan/update', $pesanan->id) }}" class="btn btn-default">Ubah</a>
