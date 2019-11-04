@@ -22,3 +22,4 @@ Latihan UKK Kode 1 (Restoran)
 
 # Errors
 1. CSS tidak nyambung. how to fix : jangan pakai "php artisan serve", tapi lewat url untuk pengaksesan, misalkan localhost/projects/ukk-restoran/home
+2. Connection refused ketika migration. how to fix : jalankan "php artisan config:clear" sebelum melakukan langkah ke-9
