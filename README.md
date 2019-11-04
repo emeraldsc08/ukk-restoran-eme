@@ -12,7 +12,7 @@ Latihan UKK Kode 1 (Restoran)
 8. Ketik "php artisan key:generate" di cmd / terminal (tanpa tanda ")
 9. Kalau sudah, ketik "php artisan migrate:fresh --seed" di cmd / terminal (tanpa tanda ")
 10. Tunggu sampai selesai
-11. Akses lewat url, misalnya "http://localhost/folder/ukk-restoran/public/home" atau akses dengan mengetikkan "php -S localhost:8000 -t public"
+11. Akses lewat url, misalnya "http://localhost/folder/ukk-restoran/home" atau akses dengan mengetikkan "php -S localhost:8000"
 12. Selamat belajar!
 
 # Users
