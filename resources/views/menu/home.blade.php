@@ -27,6 +27,7 @@
                             <th>Nama menu</th>
                             <th>Harga</th>
                             <th>Jenis</th>
+                            <th>Status</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -36,6 +37,7 @@
                                 <td>{{ $menu->nama }}</td>
                                 <td>{{ $menu->harga }}</td>
                                 <td>{{ $menu->jenisMenu->nama }}</td>
+                                <td>{{ $menu->status }}</td>
                                 <td>
                                     <a href="{{ url('/menu/update', $menu->id) }}" class="btn btn-default">Ubah</a>
                                     <a href="" class="btn btn-danger" data-toggle="modal" data-target="#modelId" onclick="prepare({{ $menu->id }})">Hapus</a>

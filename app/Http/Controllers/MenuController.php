@@ -22,6 +22,7 @@ class MenuController extends Controller
         $menu = Menu::where('id', $id)->first();
         $menu->nama = $request->input('nama');
         $menu->harga = $request->input('harga');
+        $menu->status = $request->input('status');
         $menu->save();
     }
 
@@ -66,8 +67,9 @@ class MenuController extends Controller
     {
         $this->validate($request, [
             'nama' => 'required',
-            'harga' => 'required',
-            'jenis_menu' => 'required'
+            'harga' => 'required|numeric',
+            'jenis_menu' => 'required|numeric',
+            'status' => 'required'
         ]);
 
         $this->edit($request, $id);

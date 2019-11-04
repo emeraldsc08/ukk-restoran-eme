@@ -18,6 +18,7 @@ class CreateMenuTable extends Migration
             $table->string('nama');
             $table->integer('harga');
             $table->integer('id_jenis_menu')->unsigned();
+            $table->enum('status', ['Tersedia', 'Tidak tersedia']);
             $table->timestamps();
 
             $table->foreign('id_jenis_menu')->references('id')->on('jenis_menu')->onDelete('cascade');

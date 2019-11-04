@@ -26,6 +26,7 @@ class PesananController extends Controller
         $pesanan = Pesanan::where('id', $id)->first();
         $pesanan->id_user = Session::get('userid');
         $pesanan->id_meja = $request->input('id_meja');
+        $pesanan->status = $request->input('status');
         $pesanan->save();
     }
 
@@ -85,7 +86,8 @@ class PesananController extends Controller
     public function validateEdit(Request $request, $id)
     {
         $this->validate($request, [
-            'id_meja' => 'required|numeric'
+            'id_meja' => 'required|numeric',
+            'status' => 'required'
         ]);
 
         $this->edit($request, $id);

@@ -23,6 +23,7 @@ class DetailPesananController extends Controller
         $detail = DetailPesanan::where('id', $id)->first();
         $detail->id_menu = $request->input('id_menu');
         $detail->jumlah = $request->input('jumlah');
+        $detail->status = $request->input('status');
         $detail->save();
     }
 
@@ -40,14 +41,14 @@ class DetailPesananController extends Controller
 
     public function vNew($id_pesanan)
     {
-        $menus = Menu::all();
+        $menus = Menu::where('status', 'Tersedia')->get();
         return view('detail.new', compact('menus', 'id_pesanan'));
     }
 
     public function vEdit($id_pesanan, $id)
     {
         $detail = DetailPesanan::where('id', $id)->with('menu')->first();
-        $menus = Menu::all();
+        $menus = Menu::where('status', 'Tersedia')->get();
         return view('detail.edit', compact('detail', 'menus', 'id_pesanan'));
     }
 
@@ -67,6 +68,7 @@ class DetailPesananController extends Controller
         $this->validate($request, [
             'id_menu' => 'required|numeric',
             'jumlah' => 'required|numeric',
+            'status' => 'required'
         ]);
 
         $this->edit($request, $id);

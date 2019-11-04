@@ -17,6 +17,7 @@ class CreatePesananTable extends Migration
             $table->increments('id');
             $table->integer('id_user')->unsigned();
             $table->integer('id_meja')->unsigned();
+            $table->enum('status', ['Dalam proses', 'Selesai']);
             $table->timestamps();
 
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
