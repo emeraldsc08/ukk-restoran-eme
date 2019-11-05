@@ -8,6 +8,6 @@ class Users extends Model
 {
     // nama tabel
     protected $table = 'users';
-    // kolom-kolom yang bisa diisi lebih dari banyak row sekaligus dalam 1 waktu
+    // kolom-kolom yang bisa diisi banyak row sekaligus dalam 1 waktu
     protected $fillable = ['username', 'password', 'id_level', 'nama'];
 }
