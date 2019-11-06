@@ -58,6 +58,7 @@ Route::group(['middleware' => ['check.signin']], function () {
             // Detail Pesanan
             Route::get('/{id_pesanan}/detail/new', 'DetailPesananController@vNew')->name('detail.vnew');
             Route::post('/{id_pesanan}/detail/new', 'DetailPesananController@validateNew')->name('detail.new');
+            Route::post('/{id_pesanan}/detail/submit', 'DetailPesananController@store')->name('detail.store');
             Route::get('/{id_pesanan}/detail/update/{id}', 'DetailPesananController@vEdit')->name('detail.vedit');
             Route::put('/{id_pesanan}/detail/update/{id}', 'DetailPesananController@validateEdit')->name('detail.edit');
             Route::delete('/detail/delete', 'DetailPesananController@validateDelete');

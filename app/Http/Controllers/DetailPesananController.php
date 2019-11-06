@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\DetailPesanan;
 use App\Menu;
 use App\Pesanan;
+use Illuminate\Support\Facades\Session;
 
 class DetailPesananController extends Controller
 {
@@ -14,11 +15,13 @@ class DetailPesananController extends Controller
      */
     private function new(Request $request, $id_pesanan)
     {
-        $detail = new DetailPesanan();
-        $detail->id_pesanan = $id_pesanan;
-        $detail->id_menu = $request->input('id_menu');
-        $detail->jumlah = $request->input('jumlah');
-        $detail->save();
+        $detail = [
+            'id_pesanan' => $id_pesanan,
+            'id_menu' => $request->input('id_menu'),
+            'jumlah' => $request->input('jumlah')
+        ];
+
+        Session::push('detail', $detail);
     }
 
     /**
@@ -81,7 +84,17 @@ class DetailPesananController extends Controller
         ]);
 
         $this->new($request, $id_pesanan);
-        return redirect()->route('detail.home', $id_pesanan)->with('detail_success', 'Berhasil menambah detail pesanan!');
+        // return redirect()->route('detail.home', $id_pesanan)->with('detail_success', 'Berhasil menambah detail pesanan!');
+        return redirect()->back();
+    }
+
+    public function store($id_pesanan)
+    {
+        DetailPesanan::insert(Session::get('detail'));
+        $jml_detail = count(Session::get('detail'));
+
+        Session::forget('detail');
+        return redirect()->route('detail.home', $id_pesanan)->with('detail_success', 'Berhasil menambah '. $jml_detail .' item detail pesanan!');
     }
 
     /**
