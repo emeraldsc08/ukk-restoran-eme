@@ -39,7 +39,9 @@
             <label for="">Status</label>
             <select name="status" id="" class="form-control">
                 <option value="Dalam proses" {{ $pesanan->status == "Dalam proses" ? "selected":"" }}>Dalam proses</option>
-                <option value="Selesai" {{ $pesanan->status == "Selesai" ? "selected":"" }}>Selesai</option>
+                @if ($status_detail == true)
+                    <option value="Selesai" {{ $pesanan->status == "Selesai" ? "selected":"" }}>Selesai</option>
+                @endif
             </select>
         </div>
         <input type="submit" value="Ubah" class="btn btn-primary">

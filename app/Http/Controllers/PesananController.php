@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DetailPesanan;
 use App\Exports\PesananExport;
 use Illuminate\Http\Request;
 use App\Meja;
@@ -14,7 +15,7 @@ class PesananController extends Controller
     /**
      * function untuk menambahkan record pesanan dan return id
      */
-    public function new(Request $request)
+    private function new(Request $request)
     {
         $pesanan = new Pesanan();
         $pesanan->id_user = Session::get('userid');
@@ -27,7 +28,7 @@ class PesananController extends Controller
     /**
      * function untuk mengubah record pesanan
      */
-    public function edit(Request $request, $id)
+    private function edit(Request $request, $id)
     {
         $pesanan = Pesanan::where('id', $id)->first();
         $pesanan->id_user = Session::get('userid');
@@ -39,10 +40,23 @@ class PesananController extends Controller
     /**
      * function untuk menghapus record pesanan
      */
-    public function delete(Request $request)
+    private function delete(Request $request)
     {
         $pesanan = Pesanan::where('id', $request->input('id'))->first();
         $pesanan->delete();
+    }
+
+    private function statusDetailState($id_pesanan)
+    {
+        $detail = DetailPesanan::where('id_pesanan', $id_pesanan)->get()->groupBy('status');
+
+        if (!isset($detail['Dibuat']) && !isset($detail['Dipesan'])) {
+            return true;
+        }
+
+        else {
+            return false;
+        }
     }
 
     /**
@@ -71,7 +85,9 @@ class PesananController extends Controller
     {
         $pesanan = Pesanan::where('id', $id)->with('meja')->first();
         $mejas = Meja::all();
-        return view('pesanan.edit', compact('pesanan', 'mejas'));
+        $status_detail = $this->statusDetailState($id);
+
+        return view('pesanan.edit', compact('pesanan', 'mejas', 'status_detail'));
     }
 
     /**

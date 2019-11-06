@@ -12,7 +12,7 @@ class DetailPesananController extends Controller
     /**
      * function untuk membuat detail pesanan baru
      */
-    public function new(Request $request, $id_pesanan)
+    private function new(Request $request, $id_pesanan)
     {
         $detail = new DetailPesanan();
         $detail->id_pesanan = $id_pesanan;
@@ -24,7 +24,7 @@ class DetailPesananController extends Controller
     /**
      * function untuk mengubah detail pesanan
      */
-    public function edit(Request $request, $id)
+    private function edit(Request $request, $id)
     {
         $detail = DetailPesanan::where('id', $id)->first();
         $detail->id_menu = $request->input('id_menu');
@@ -36,7 +36,7 @@ class DetailPesananController extends Controller
     /**
      * function untuk menghapus detail pesanan
      */
-    public function delete(Request $request)
+    private function delete(Request $request)
     {
         $detail = DetailPesanan::where('id', $request->input('id'))->first();
         $detail->delete();

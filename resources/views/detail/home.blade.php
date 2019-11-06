@@ -7,6 +7,7 @@
     @else
         <a href="{{ route('detail.vnew', $detail_pesanans->id) }}" class="btn btn-success mb-4">Tambah</a>
     @endif
+    <a href="{{ url('/pesanan/home') }}" class="btn btn-info mb-4">Kembali ke pesanan</a>
 
     @if (Session::has('detail_success'))
         <div class="alert alert-success mb-4" role="alert">
