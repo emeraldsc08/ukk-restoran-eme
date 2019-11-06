@@ -7,6 +7,7 @@ use App\Pesanan;
 use Illuminate\Http\Request;
 use App\Transaksi;
 use Maatwebsite\Excel\Facades\Excel;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class TransaksiController extends Controller
 {
@@ -19,6 +20,8 @@ class TransaksiController extends Controller
         $transaksi->id_pesanan = $request->input('id_pesanan');
         $transaksi->bayar = $request->input('bayar');
         $transaksi->save();
+
+        return $transaksi->id;
     }
 
      /**
@@ -71,9 +74,16 @@ class TransaksiController extends Controller
         }
 
         else {
-            $this->bayar($request);
-            return redirect('/transaksi/home')->with('transaksi_success', 'Pembayaran berhasil!');
+            $transaksi_id = $this->bayar($request);
+            return redirect()->route('transaksi.invo', $transaksi_id);
         }
+    }
+
+    public function downloadInvo($id)
+    {
+        $transaksi = Transaksi::where('id', $id)->with('pesanan')->first();
+        $invo = PDF::loadView('invoice.invo', compact('transaksi'))->setPaper('a4', 'landscape');
+        return $invo->stream();
     }
 
      /**

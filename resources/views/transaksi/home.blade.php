@@ -30,6 +30,7 @@
                             <th>Bayar</th>
                             <th>Kembali</th>
                             <th>Tanggal</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -48,6 +49,9 @@
                                 <td>{{ $transaksi->bayar }}</td>
                                 <td>{{ $transaksi->bayar - $total }}</td>
                                 <td>{{ $transaksi->created_at }}</td>
+                                <td>
+                                    <a href="{{ route('transaksi.invo', $transaksi->id) }}" target="_blank" class="btn btn-info">Nota</a>
+                                </td>
                             </tr>
                             @php
                                 $total = 0

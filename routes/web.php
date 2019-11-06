@@ -88,6 +88,7 @@ Route::group(['middleware' => ['check.signin']], function () {
         Route::group(['middleware' => ['kasir.access']], function () {
             Route::get('/bayar',  'TransaksiController@vBayar');
             Route::post('/bayar', 'TransaksiController@validateBayar');
+            Route::get('/{id}/print', 'TransaksiController@downloadInvo')->name('transaksi.invo');
         });
     });
 });
