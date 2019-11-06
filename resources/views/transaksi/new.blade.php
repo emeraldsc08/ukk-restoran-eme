@@ -30,7 +30,7 @@
             <select name="id_pesanan" id="pesanan" class="form-control" onchange="prepare()">
                 <option value="">-- Pilih Nomer Pesanan --</option>
                 @foreach ($pesanans as $pesanan)
-                    @if ($pesanan->status != 'Dalam proses')
+                    @if ($pesanan->status != \App\Pesanan::PROSES)
                         @if (!\App\Transaksi::where('id_pesanan', $pesanan->id)->exists())
                             <option value="{{ $pesanan->id }}">Nomer : {{ $pesanan->id }}, Meja : {{ $pesanan->meja->nomer }}, Waktu : {{ $pesanan->created_at }}</option>
                         @endif

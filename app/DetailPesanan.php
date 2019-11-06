@@ -11,6 +11,11 @@ class DetailPesanan extends Model
     // kolom-kolom yang bisa diisi banyak row sekaligus dalam 1 waktu
     protected $fillable = ['id_pesanan','id_menu', 'jumlah'];
 
+    // nilai constant
+    const DIBUAT = 'Dibuat';
+    const DIPESAN = 'Dipesan';
+    const DIANTAR = 'Sudah diantar';
+
     // relasi
     public function menu()
     {

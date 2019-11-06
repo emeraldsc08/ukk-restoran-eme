@@ -86,7 +86,7 @@
                 <form action="{{ url('pesanan/detail/delete', []) }}" method="post">
                     {{ csrf_field() }}
                     {{ method_field('DELETE') }}
-                    <input type="text" name="id" id="detailid" readonly>
+                    <input type="hidden" name="id" id="detailid" readonly>
                     <div class="modal-body">
                         Apakah anda yakin ingin menghapus pemesanan <b><span id="nama"></span></b>? Aksi ini tidak dapat di-<i>undo</i>
                     </div>

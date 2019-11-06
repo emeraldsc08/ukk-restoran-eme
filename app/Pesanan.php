@@ -11,6 +11,10 @@ class Pesanan extends Model
     // kolom-kolom yang bisa diisi banyak row sekaligus dalam 1 waktu
     protected $fillable = ['id_user'];
 
+    // nilai constant
+    const PROSES = 'Dalam proses';
+    const SELESAI = 'Selesai';
+
     // relasi
     public function detail_pesanan()
     {

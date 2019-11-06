@@ -26,7 +26,7 @@
             <select name="id_meja" id="" class="form-control">
                 <option value="">-- Pilih Meja --</option>
                 @foreach ($mejas as $meja)
-                    @if (!\App\Pesanan::where('id_meja', $meja->id)->where('status', 'Dalam proses')->exists())
+                    @if (!\App\Pesanan::where('id_meja', $meja->id)->where('status', \App\Pesanan::PROSES)->exists())
                         <option value="{{ $meja->id }}">{{ $meja->nomer }}</option>
                     @endif
                 @endforeach

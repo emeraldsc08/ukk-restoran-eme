@@ -40,9 +40,9 @@
         <div class="form-group">
             <label for="">Status</label>
             <select name="status" id="" class="form-control">
-                <option value="Dipesan" {{ $detail->status == "Dipesan" ? "selected":"" }}>Dipesan</option>
-                <option value="Dibuat" {{ $detail->status == "Dibuat" ? "selected":"" }}>Dibuat</option>
-                <option value="Sudah diantar" {{ $detail->status == "Sudah diantar" ? "selected":"" }}>Sudah diantar</option>
+                <option value="Dipesan" {{ $detail->status == \App\DetailPesanan::DIPESAN ? "selected":"" }}>Dipesan</option>
+                <option value="Dibuat" {{ $detail->status == \App\DetailPesanan::DIBUAT ? "selected":"" }}>Dibuat</option>
+                <option value="Sudah diantar" {{ $detail->status == \App\DetailPesanan::DIANTAR ? "selected":"" }}>Sudah diantar</option>
             </select>
         </div>
         <input type="submit" value="Ubah" class="btn btn-primary">

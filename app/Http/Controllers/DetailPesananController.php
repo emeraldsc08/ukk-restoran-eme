@@ -88,6 +88,9 @@ class DetailPesananController extends Controller
         return redirect()->back();
     }
 
+    /**
+     * function untuk mass insert
+     */
     public function store($id_pesanan)
     {
         DetailPesanan::insert(Session::get('detail'));
