@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\DetailPesanan;
 use App\Menu;
 use App\Pesanan;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Session;
 
 class DetailPesananController extends Controller
@@ -18,7 +19,9 @@ class DetailPesananController extends Controller
         $detail = [
             'id_pesanan' => $id_pesanan,
             'id_menu' => $request->input('id_menu'),
-            'jumlah' => $request->input('jumlah')
+            'jumlah' => $request->input('jumlah'),
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
         ];
 
         Session::push('detail', $detail);
