@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Session;
+use App\Users;
 
 class AdminAccess
 {
@@ -16,7 +17,7 @@ class AdminAccess
      */
     public function handle($request, Closure $next)
     {
-        if (Session::get('level') == 1) {
+        if (Session::get('level') == Users::ADMIN) {
             return $next($request);
         }
 

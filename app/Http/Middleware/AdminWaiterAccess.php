@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Users;
 use Closure;
 use Illuminate\Support\Facades\Session;
 
@@ -16,7 +17,7 @@ class AdminWaiterAccess
      */
     public function handle($request, Closure $next)
     {
-        if (Session::get('level') == 1 || Session::get('level') == 2) {
+        if (Session::get('level') == Users::ADMIN || Session::get('level') == Users::WAITER) {
             return $next($request);
         }
 
