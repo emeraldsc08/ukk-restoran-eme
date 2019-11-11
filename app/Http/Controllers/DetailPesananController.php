@@ -79,14 +79,6 @@ class DetailPesananController extends Controller
             }
         }
 
-        // for ($i=0; $i < count($orderArr); $i++) { 
-        //     $final[] = [
-        //         'id_pesanan' => $id_pesanan,
-        //         'id_menu' => $orderArr[$i][0],
-        //         'jumlah' => $orderArr[$i][1],
-        //     ];
-        // }
-
         return $final;
     }
 
