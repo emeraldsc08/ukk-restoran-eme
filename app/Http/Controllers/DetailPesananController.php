@@ -69,7 +69,7 @@ class DetailPesananController extends Controller
         $final = [];
 
         for ($i=0; $i < count($arr); $i++) { 
-            if (!is_null($arr[$i][2]) && $arr[$i][2] != 0) {
+            if (!is_null($arr[$i][1]) && $arr[$i][1] != 0) {
                 array_push($orderArr, $arr[$i]);
             }
         }
@@ -77,8 +77,8 @@ class DetailPesananController extends Controller
         for ($i=0; $i < count($orderArr); $i++) { 
             $final[] = [
                 'id_pesanan' => $id_pesanan,
-                'id_menu' => $orderArr[$i][1],
-                'jumlah' => $orderArr[$i][2],
+                'id_menu' => $orderArr[$i][0],
+                'jumlah' => $orderArr[$i][1],
             ];
         }
 
