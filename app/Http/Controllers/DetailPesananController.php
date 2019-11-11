@@ -87,7 +87,7 @@ class DetailPesananController extends Controller
         $final = [];
 
         for ($i=0; $i < count($arr); $i++) { 
-            if (!is_null($arr[$i][2])) {
+            if (!is_null($arr[$i][2]) && $arr[$i][2] != 0) {
                 array_push($orderArr, $arr[$i]);
             }
         }
