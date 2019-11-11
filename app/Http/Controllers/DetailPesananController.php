@@ -65,22 +65,27 @@ class DetailPesananController extends Controller
      */
     private function createAssocArr($arr, $id_pesanan)
     {
-        $orderArr = [];
+    //     $orderArr = [];
         $final = [];
 
         for ($i=0; $i < count($arr); $i++) { 
             if (!is_null($arr[$i][1]) && $arr[$i][1] != 0) {
-                array_push($orderArr, $arr[$i]);
+                // array_push($orderArr, $arr[$i]);
+                $final[] = [
+                    'id_pesanan' => $id_pesanan,
+                    'id_menu' => $arr[$i][0],
+                    'jumlah' => $arr[$i][1],
+                ];
             }
         }
 
-        for ($i=0; $i < count($orderArr); $i++) { 
-            $final[] = [
-                'id_pesanan' => $id_pesanan,
-                'id_menu' => $orderArr[$i][0],
-                'jumlah' => $orderArr[$i][1],
-            ];
-        }
+        // for ($i=0; $i < count($orderArr); $i++) { 
+        //     $final[] = [
+        //         'id_pesanan' => $id_pesanan,
+        //         'id_menu' => $orderArr[$i][0],
+        //         'jumlah' => $orderArr[$i][1],
+        //     ];
+        // }
 
         return $final;
     }

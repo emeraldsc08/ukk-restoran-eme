@@ -53,7 +53,7 @@
         </div>
     </div>
     <hr>
-    <form action="{{ route('detail.new', $id_pesanan) }}" method="post">
+    <form action="{{ route('detail.new', $id_pesanan) }}" class="mb-4" method="post">
         {{ csrf_field() }}
         @foreach ($menus as $item)
             <div class="row">
@@ -68,6 +68,6 @@
                 </div>
             </div>
         @endforeach
-        <input type="submit" value="Pesan" class="btn btn-primary">
+        <input type="submit" value="Pesan" class="btn btn-success">
     </form>
 @endsection
