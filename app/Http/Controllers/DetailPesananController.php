@@ -16,15 +16,102 @@ class DetailPesananController extends Controller
      */
     private function new(Request $request, $id_pesanan)
     {
-        $detail = [
-            'id_pesanan' => $id_pesanan,
-            'id_menu' => $request->input('id_menu'),
-            'jumlah' => $request->input('jumlah'),
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
-        ];
+        $menu = $this->pushMenu($request);
+        $jumlah = $this->pushJumlah($request);
+        $idPesanan = $this->pushIdPesanan($request, $id_pesanan);
+        $map = $this->mapOrder($idPesanan, $menu, $jumlah);
+        $order = $this->createAssocArr($map);
 
-        Session::push('detail', $detail);
+        return $order;
+    }
+
+    /**
+     * function untuk push array menu
+     */
+    private function pushMenu(Request $request)
+    {
+        $menuArr = [];
+        $menu = $request->input('id_menu');
+
+        foreach ($menu as $item) {
+            array_push($menuArr, $item);
+        }
+
+        return $menuArr;
+    }
+
+    /**
+     * function untuk push array jumlah
+     */
+    private function pushJumlah(Request $request)
+    {
+        $jumlahArr = [];
+        $jumlah = $request->input('jumlah');
+        
+        foreach ($jumlah as $item) {
+            array_push($jumlahArr, $item);
+        }
+
+        return $jumlahArr;
+    }
+
+    /**
+     * function untuk push array idPesanan
+     */
+    private function pushIdPesanan(Request $request, $id_pesanan)
+    {
+        $idPesanan = [];
+        $menu = $request->input('id_menu');
+
+        foreach ($menu as $item) {
+            array_push($idPesanan, $id_pesanan);
+        }
+
+        return $idPesanan;
+    }
+
+    /**
+     * function untuk map array
+     */
+    private function mapOrder($idPesanan, $menuArr, $jumlahArr)
+    {
+        return array_map(null, $idPesanan, $menuArr, $jumlahArr);
+    }
+
+    /**
+     * function untuk membuat array asosiatif
+     */
+    private function createAssocArr($arr)
+    {
+        $orderArr = [];
+        $final = [];
+
+        for ($i=0; $i < count($arr); $i++) { 
+            if (!is_null($arr[$i][2])) {
+                array_push($orderArr, $arr[$i]);
+            }
+        }
+
+        for ($i=0; $i < count($orderArr); $i++) { 
+            $final[] = [
+                'id_pesanan' => $orderArr[$i][0],
+                'id_menu' => $orderArr[$i][1],
+                'jumlah' => $orderArr[$i][2],
+            ];
+        }
+
+        return $final;
+    }
+
+    /**
+     * function untuk mass insert
+     */
+    private function store($order, $id_pesanan)
+    {
+        DetailPesanan::insert($order);
+        $jml = count($order);
+
+        return redirect()->route('detail.home', $id_pesanan)->with('detail_success', 'Berhasil menambah '. $jml .' item detail pesanan!');
     }
 
     /**
@@ -81,26 +168,8 @@ class DetailPesananController extends Controller
      */
     public function validateNew(Request $request, $id_pesanan)
     {
-        $this->validate($request, [
-            'id_menu' => 'required|numeric',
-            'jumlah' => 'required|numeric',
-        ]);
-
-        $this->new($request, $id_pesanan);
-        // return redirect()->route('detail.home', $id_pesanan)->with('detail_success', 'Berhasil menambah detail pesanan!');
-        return redirect()->back();
-    }
-
-    /**
-     * function untuk mass insert
-     */
-    public function store($id_pesanan)
-    {
-        DetailPesanan::insert(Session::get('detail'));
-        $jml_detail = count(Session::get('detail'));
-
-        Session::forget('detail');
-        return redirect()->route('detail.home', $id_pesanan)->with('detail_success', 'Berhasil menambah '. $jml_detail .' item detail pesanan!');
+        $order = $this->new($request,$id_pesanan);
+        return $this->store($order, $id_pesanan);
     }
 
     /**
