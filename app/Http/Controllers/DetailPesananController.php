@@ -16,9 +16,8 @@ class DetailPesananController extends Controller
     {
         $menu = $this->pushMenu($request);
         $jumlah = $this->pushJumlah($request);
-        $idPesanan = $this->pushIdPesanan($request, $id_pesanan);
-        $map = $this->mapOrder($idPesanan, $menu, $jumlah);
-        $order = $this->createAssocArr($map);
+        $map = $this->mapOrder($menu, $jumlah);
+        $order = $this->createAssocArr($map, $id_pesanan);
 
         return $order;
     }
@@ -54,32 +53,17 @@ class DetailPesananController extends Controller
     }
 
     /**
-     * function untuk push array idPesanan
-     */
-    private function pushIdPesanan(Request $request, $id_pesanan)
-    {
-        $idPesanan = [];
-        $menu = $request->input('id_menu');
-
-        foreach ($menu as $item) {
-            array_push($idPesanan, $id_pesanan);
-        }
-
-        return $idPesanan;
-    }
-
-    /**
      * function untuk map array
      */
-    private function mapOrder($idPesanan, $menuArr, $jumlahArr)
+    private function mapOrder($menuArr, $jumlahArr)
     {
-        return array_map(null, $idPesanan, $menuArr, $jumlahArr);
+        return array_map(null, $menuArr, $jumlahArr);
     }
 
     /**
      * function untuk membuat array asosiatif
      */
-    private function createAssocArr($arr)
+    private function createAssocArr($arr, $id_pesanan)
     {
         $orderArr = [];
         $final = [];
@@ -92,7 +76,7 @@ class DetailPesananController extends Controller
 
         for ($i=0; $i < count($orderArr); $i++) { 
             $final[] = [
-                'id_pesanan' => $orderArr[$i][0],
+                'id_pesanan' => $id_pesanan,
                 'id_menu' => $orderArr[$i][1],
                 'jumlah' => $orderArr[$i][2],
             ];
