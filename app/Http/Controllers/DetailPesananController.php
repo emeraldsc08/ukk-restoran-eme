@@ -6,8 +6,6 @@ use Illuminate\Http\Request;
 use App\DetailPesanan;
 use App\Menu;
 use App\Pesanan;
-use Carbon\Carbon;
-use Illuminate\Support\Facades\Session;
 
 class DetailPesananController extends Controller
 {
