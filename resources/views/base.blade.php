@@ -33,7 +33,7 @@
 
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <div class="sidebar-brand-text mx-3">RestoKu</div>
+        <div class="sidebar-brand-text mx-3">E-Resto</div>
       </a>
 
       <!-- Divider -->
@@ -219,7 +219,9 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2019</span>
+            <span>Copyright &copy; Emerald 2019
+
+            </span>
           </div>
         </div>
       </footer>

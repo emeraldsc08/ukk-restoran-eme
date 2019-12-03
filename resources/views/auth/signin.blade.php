@@ -1,92 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <title>Restoku - Masuk</title>
-
-  <!-- Custom fonts for this template-->
-  <link href="{{ url('public/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
-  <!-- Custom styles for this template-->
-  <link href="{{ url('public/css/sb-admin-2.min.css') }}" rel="stylesheet">
-
+	<title>Restoran - Login</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+    <link type="text/css" href="{{ asset('public') }}/vendor/select2/select2.min.css" rel="stylesheet">
+<!--===============================================================================================-->
+    <link type="text/css" href="{{ asset('public') }}/css/util.css" rel="stylesheet">
+    <link type="text/css" href="{{ asset('public') }}/css/main.css" rel="stylesheet">
+<!--===============================================================================================-->
 </head>
+<body>
 
-<body class="bg-gradient-primary">
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<div class="login100-pic js-tilt" data-tilt>
+                    <img src="{{ asset('public') }}/img/img-01.png" class="navbar-brand-img" alt="...">
+				</div>
+				<form class="login100-form validate-form" method="POST" action="{{ url('/auth/signin') }}">
+                {{ csrf_field() }}
+					<span class="login100-form-title">
+						Member Login
+                    </span>
+					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+						<input class="input100" type="text" name="username" placeholder="Enter Username" aria-describedby="emailHelp">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate = "Password is required">
+						<input class="input100" type="password" id="exampleInputPassword"
+                            name="password" placeholder="Password">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+					</div>
 
-  <div class="container">
-
-    <!-- Outer Row -->
-    <div class="row justify-content-center">
-
-      <div class="col-xl-10 col-lg-12 col-md-9">
-
-        <div class="card o-hidden border-0 shadow-lg my-5">
-          <div class="card-body p-0">
-            <!-- Nested Row within Card Body -->
-            <div class="row">
-              <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
-              <div class="col-lg-6">
-                <div class="p-5">
-                  <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">Selamat Datang!</h1>
-                  </div>
-                  <form class="user" method="POST" action="{{ url('/auth/signin') }}">
-                    {{ csrf_field() }}
-                    <div class="form-group">
-                      <input type="text" class="form-control form-control-user" id="exampleInputEmail" name="username" aria-describedby="emailHelp" placeholder="Masukkan username...">
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn">
+							Login
+						</button>
                     </div>
-                    <div class="form-group">
-                      <input type="password" class="form-control form-control-user" id="exampleInputPassword" name="password" placeholder="Masukkan password...">
+                    <div class="text-center p-t-136">
+
                     </div>
-                    <input type="submit" value="Masuk" class="btn btn-primary btn-user btn-block">
-                  </form>
-                  @if ($errors->any())
-                      <hr>
-                      <div class="alert alert-danger" role="alert">
-                        <ul>
-                          @foreach ($errors->all() as $err)
-                              <li>{{ $err }}</li>
-                          @endforeach
-                        </ul>
-                      </div>
-                  @endif
-                  @if (Session::has('auth_err'))
-                      <hr>
-                      <div class="alert alert-danger" role="alert">
-                        <p>{{ Session::get('auth_err') }}</p>
-                      </div>
-                  @endif
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+				</form>
+			</div>
+		</div>
+	</div>
 
-      </div>
 
-    </div>
 
-  </div>
 
-  <!-- Bootstrap core JavaScript-->
-  <script src="{{ url('public/vendor/jquery/jquery.min.js') }}"></script>
-  <script src="{{ url('public/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<!--===============================================================================================-->
 
-  <!-- Core plugin JavaScript-->
-  <script src="{{ url('public/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+    <script src="{{ asset('public') }}/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+    <script src="{{ asset('public') }}/vendor/bootstrap/js/popper.js"></script>
 
-  <!-- Custom scripts for all pages-->
-  <script src="{{ url('public/js/sb-admin-2.min.js') }}"></script>
+    <script src="{{ asset('public') }}/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+<!--===============================================================================================-->
+    <script src="{{ asset('public') }}/vendor/select2/select2.min.js"></script>
+	<!-- <script src="/vendor/select2/select2.min.js"></script> -->
+<!--===============================================================================================-->
+	<script src="{{ asset('public') }}/vendor/tilt/tilt.jquery.min.js"></script>
+	<script >
+		$('.js-tilt').tilt({
+			scale: 1.2
+		})
+	</script>
+<!--===============================================================================================-->
+    <!-- <script src="js/main.js"></script> -->
+    <script src="{{ asset('public') }}/js/main.js"></script>
 
 </body>
-
 </html>
+

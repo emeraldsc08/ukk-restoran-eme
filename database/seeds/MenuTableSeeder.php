@@ -13,57 +13,57 @@ class MenuTableSeeder extends Seeder
     public function run()
     {
         Menu::create([
-            'nama' => 'Ayam Goreng',
-            'harga' => '22000',
+            'nama' => 'Lontang Balap',
+            'harga' => '18000',
             'id_jenis_menu' => 1,
             'status' => 'Tersedia'
         ]);
 
         Menu::create([
-            'nama' => 'Bebek Goreng',
-            'harga' => '30000',
+            'nama' => 'Ayam Panggang Saus Manis',
+            'harga' => '45000',
             'id_jenis_menu' => 1,
             'status' => 'Tersedia'
         ]);
 
         Menu::create([
-            'nama' => 'Rawon',
-            'harga' => '25000',
+            'nama' => 'Rawon Buntut',
+            'harga' => '35000',
             'id_jenis_menu' => 1,
             'status' => 'Tersedia'
         ]);
 
         Menu::create([
-            'nama' => 'Soto',
-            'harga' => '25000',
+            'nama' => 'Gurame Bakar Saus Aceh',
+            'harga' => '45000',
             'id_jenis_menu' => 1,
             'status' => 'Tersedia'
         ]);
 
         Menu::create([
-            'nama' => 'Es Teh',
-            'harga' => '3500',
+            'nama' => 'Mojito',
+            'harga' => '7000',
             'id_jenis_menu' => 2,
             'status' => 'Tersedia'
         ]);
 
         Menu::create([
-            'nama' => 'Susu Coklat',
-            'harga' => '3500',
+            'nama' => 'Soda Gembira',
+            'harga' => '11000',
             'id_jenis_menu' => 2,
             'status' => 'Tersedia'
         ]);
-        
+
         Menu::create([
-            'nama' => 'Es Krim',
-            'harga' => '8000',
+            'nama' => 'Wedang Jahe',
+            'harga' => '12000',
             'id_jenis_menu' => 3,
             'status' => 'Tersedia'
         ]);
 
         Menu::create([
-            'nama' => 'Roti Bakar Keju',
-            'harga' => '12000',
+            'nama' => 'Tahu Petis',
+            'harga' => '10000',
             'id_jenis_menu' => 3,
             'status' => 'Tersedia'
         ]);
